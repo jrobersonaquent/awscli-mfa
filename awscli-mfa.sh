@@ -4105,7 +4105,7 @@ for a one-off authentication for a role session initialization.\\n\\n"
 
 			if [[ "$role_session_request_type" == "standard" ]]; then
 
-				selected_auth_session_ident="${merged_role_source_profile_ident[$profile_idx]}-mfasession"
+				selected_auth_session_ident="${merged_role_source_profile_ident[$profile_idx]}-mfa"
 			else  # this is a chained role, so use a role session instead
 
 				selected_auth_session_ident="${merged_role_source_profile_ident[$profile_idx]}-rolesession"
@@ -4132,7 +4132,7 @@ for a one-off authentication for a role session initialization.\\n\\n"
 
 			# the aquireSession with "true" as the third param auto-persists the new
 			# session so that it can be used here simply by referring to the ident
-			role_init_profile="${merged_role_source_profile_ident[$profile_idx]}-mfasession"
+			role_init_profile="${merged_role_source_profile_ident[$profile_idx]}-mfa"
 
 			# get truncated session duration
 			getMaxSessionDuration session_duration "${merged_ident[$profile_idx]}" "role" "true"
@@ -4246,7 +4246,7 @@ Cannot continue.${Color_Off}\\n"
 
 				printf "\\n${Green}${On_Black}MFA session token acquired.${Color_Off}\\n\\n"
 				# setting globals (depends on the use-case which one will be exported)
-				AWS_DEFAULT_PROFILE="${merged_ident[$profile_idx]}-mfasession"
+				AWS_DEFAULT_PROFILE="${merged_ident[$profile_idx]}-mfa"
 				AWS_PROFILE="$AWS_DEFAULT_PROFILE"
 				AWS_SESSION_IDENT="$AWS_DEFAULT_PROFILE"
 
